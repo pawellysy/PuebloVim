@@ -15,7 +15,7 @@ M.general = {
 
   n = {
     ["<Esc>"] = { "<cmd>noh<CR>", "Clear highlights" },
-    ["<leader>s"] = {"<cmd>wa<CR>", "save all files"},
+    ["<leader>ss"] = {"<cmd>wa<CR>", "save all files"},
     ["<leader>lg"] = {"<cmd>LazyGit<CR>", "Open LazyGit"},
     -- switch between windows "<leader>d"
             --
@@ -266,17 +266,12 @@ M.telescope = {
     ["<leader>cm"] = { "<cmd> Telescope git_commits <CR>", "Git commits" },
     ["<leader>gt"] = { "<cmd> Telescope git_status <CR>", "Git status" },
 
-    -- pick a hidden term
-    ["<leader>pt"] = { "<cmd> Telescope terms <CR>", "Pick hidden term" },
-
-    -- theme switcher
     ["<leader>ma"] = { "<cmd> Telescope marks <CR>", "telescope bookmarks" },
   },
 }
 
 M.whichkey = {
   plugin = true,
-
   n = {
     ["<leader>wK"] = {
       function()
