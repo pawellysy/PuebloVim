@@ -14,7 +14,7 @@ M.general = {
   },
 
   n = {
-    ["<Esc>"] = { ":noh <CR>", "Clear highlights" },
+    ["<Esc>"] = { "<cmd>noh<CR>", "Clear highlights" },
     ["<leader>s"] = {"<cmd>wa<CR>", "save all files"},
     ["<leader>lg"] = {"<cmd>LazyGit<CR>", "Open LazyGit"},
     -- switch between windows "<leader>d"
