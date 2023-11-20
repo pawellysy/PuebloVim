@@ -12,4 +12,18 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 
-require('lazy').setup('pueblo.plugins')
+require('lazy').setup({{import = 'pueblo.plugins'}, {import = 'pueblo.plugins.lsp'}}, {
+
+    install = {
+
+        colorscheme = {'tokyonight'}
+    },
+    checker = {
+        enabled = true,
+        notify = false
+    },
+    change_detection = {
+        notify = false
+    }
+
+})

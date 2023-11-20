@@ -14,6 +14,9 @@ M.general = {
   },
 
   n = {
+    ["<tab>"] = {"<cmd>bnext<CR>", "go to next buffer"},
+    ["<S-tab>"] = {"<cmd>bprev<CR>", "go to prev buffer"},
+    ["<leader>x"] = {"<cmd>bd<CR>", "go to prev buffer"},
     ["<Esc>"] = { "<cmd>noh<CR>", "Clear highlights" },
     ["<leader>ss"] = {"<cmd>wa<CR>", "save all files"},
     ["<leader>lg"] = {"<cmd>LazyGit<CR>", "Open LazyGit"},
@@ -373,6 +376,43 @@ M.gitsigns = {
       "Toggle deleted",
     },
   },
+}
+
+M.trouble = {
+    plugin = true,
+    n = {
+       ["<leader>tx"] = {
+
+            function() require("trouble").toggle() end,
+            "Trouble: toggle"
+        },
+        ["<leader>tw"] = {
+            function()
+                require("trouble").toggle("workspace_diagnostics")
+            end,
+            "Trouble: workspace workspace_diagnostics"
+        },
+        ["<leader>td"] = {
+            function()
+                require("trouble").toggle("document_diagnostics")
+            end,
+            'Trouble: document_diagnostics'
+        },
+        ["<leader>tq"] = {
+            function()
+                require("trouble").toggle("quickfix")
+            end,
+            'Trouble: quickfix list'
+        },
+        ["<leader>tl"] = {
+            function() require("trouble").toggle("loclist") end,
+            'Trouble: loclist'
+        },
+        ["gR"] = {
+            function() require("trouble").toggle("lsp_references") end,
+            'Trouble: lsp references'
+        }
+    }
 }
 
 return M
