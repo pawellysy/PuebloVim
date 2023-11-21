@@ -415,4 +415,31 @@ M.trouble = {
     }
 }
 
+M.harpoon = {
+    n = {
+        ['<leader>a'] = {
+            function() require('harpoon.mark').add_file() end, 'Harpoon: add file'
+        },
+        ['<c-e>'] = {
+            function() require('harpoon.ui').toggle_quick_menu() end, 'Harpoon: toggle quick menu'
+        },
+        ['<a-j>'] = {
+            function() require('harpoon.ui').nav_next() end, 'Harpoon: next'
+        },
+        ['<a-k>'] = {
+            function() require('harpoon.ui').nav_prev() end, 'Harpoon: prev'
+        },
+        ['<a-i>'] = {
+            function() require('harpoon.ui').nav_file(1) end, 'Harpoon: goto 1'
+        },
+        ['<a-o>'] = {
+            function() require('harpoon.ui').nav_file(2) end, 'Harpoon: goto 2'
+        },
+        ['<a-p>'] = {
+            function() require('harpoon.ui').nav_file(3) end, 'Harpoon: goto 3'
+        },
+    }
+
+}
+
 return M

@@ -89,6 +89,22 @@ return {
             },
         },
         textobjects = {
+        select = {
+            enable = true,
+            lookehead = true,
+            keymaps = {
+                ["a="] = { query = "@assignment.outer", desc = "Select outer part of assignment"},
+                ["i="] = { query = "@assignment.inner", desc = "Select inner part of assignment"},
+                ["l="] = { query = "@assignment.lhs", desc = "Select left hand side of assignment"},
+                ["r="] = { query = "@assignment.rhs", desc = "Select right hand side of assignment"},
+                ["aa"] = { query = "@parameter.outer", desc = "Select outer parameter"},
+                ["ia"] = { query = "@paramenter.inner", desc = "Select inner parameter"},
+                ["af"] = { query = "@function.outer", desc = "Select outer function"},
+                ["if"] = { query = "@function.inner", desc = "Select inner function"},
+                ["ac"] = { query = "@class.outer", desc = "Select outer class"},
+                ["ic"] = { query = "@class.inner", desc = "Select inner class"},
+            }
+        },
             move = {
                 enable = true,
                 goto_next_start = { ["]f"] = "@function.outer", ["]c"] = "@class.outer" },
@@ -98,7 +114,6 @@ return {
             },
         },
     },
-    ---@param opts TSConfig
     config = function(_, opts)
         if type(opts.ensure_installed) == "table" then
             ---@type table<string, boolean>
