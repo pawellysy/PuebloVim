@@ -8,6 +8,12 @@ return {
     },
     branch = "v3.x",
     cmd = "Neotree",
+    opts = {
+        filesystem = {
+            bind_to_cwd = false,
+            follow_current_file = { enabled = true }
+        }
+    },
     keys = {
         { "<leader>e", "<cmd>Neotree<CR>", desc = "show Tree Structure", remap = true },
     },

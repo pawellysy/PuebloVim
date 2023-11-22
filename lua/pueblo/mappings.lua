@@ -127,6 +127,12 @@ M.lspconfig = {
   -- See `<cmd> :help vim.lsp.*` for documentation on any of the below functions
 
   n = {
+    ["<leader>ra"] = {
+      function()
+        vim.lsp.buf.rename()
+      end,
+      "LSP rename",
+    },
     ["gD"] = {
       function()
         vim.lsp.buf.declaration()
