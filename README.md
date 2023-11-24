@@ -3,7 +3,8 @@
 
 #### Currently WIP.
 TODO:
-[] - Configure DAP
+Configure DAP
+Fix formatting the selected part. 
 
 
 ##### Adding new plugins
