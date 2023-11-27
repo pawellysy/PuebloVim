@@ -1,4 +1,6 @@
 local M = {}
+-- create a vim shortcut to close all other buffers
+-- vim.api.nvim_set_keymap()
 
 M.general = {
   i = {
@@ -14,56 +16,56 @@ M.general = {
   },
 
   n = {
-    ["<tab>"] = {"<cmd>bnext<CR>", "go to next buffer"},
-    ["<S-tab>"] = {"<cmd>bprev<CR>", "go to prev buffer"},
-    ["<leader>x"] = {"<cmd>bd<CR>", "go to prev buffer"},
-    ["<Esc>"] = { "<cmd>noh<CR>", "Clear highlights" },
-    ["<leader>ss"] = {"<cmd>wa<CR>", "save all files"},
-    ["<leader>lg"] = {"<cmd>LazyGit<CR>", "Open LazyGit"},
-    -- switch between windows "<leader>d"
-            --
-    ["<leader>d"] = { "\"_d", "delete to black hole register"},
-    ["<C-h>"] = { "<C-w>h", "Window left" },
-    ["<C-l>"] = { "<C-w>l", "Window right" },
-    ["<C-j>"] = { "<C-w>j", "Window down" },
-    ["<C-k>"] = { "<C-w>k", "Window up" },
-    ["J"] = {"mzJ`z", 'move next line to the same line'},
-    -- move 1/2 screen
-    ["<C-d>"] = {"<C-d>zz", 'go down 1/2 screen'},
-    ["<C-u>"] = {"<C-u>zz", 'go up 1/2 screen'},
+        ["<tab>"] = {"<cmd>bnext<CR>", "go to next buffer"},
+        ["<S-tab>"] = {"<cmd>bprev<CR>", "go to prev buffer"},
+        ['<leader>b']= {':BufDel<CR>', "close all other buffers"},
+        ["<leader>x"] = {"<cmd>bd<CR>", "go to prev buffer"},
+        ["<Esc>"] = { "<cmd>noh<CR>", "Clear highlights" },
+        ["<leader>ss"] = {"<cmd>wa<CR>", "save all files"},
+        ["<leader>lg"] = {"<cmd>LazyGit<CR>", "Open LazyGit"},
+        -- switch between windows "<leader>d"
+        --
+        ["<leader>d"] = { "\"_d", "delete to black hole register"},
+        ["<C-h>"] = { "<C-w>h", "Window left" },
+        ["<C-l>"] = { "<C-w>l", "Window right" },
+        ["<C-j>"] = { "<C-w>j", "Window down" },
+        ["<C-k>"] = { "<C-w>k", "Window up" },
+        ["J"] = {"mzJ`z", 'move next line to the same line'},
+        -- move 1/2 screen
+        ["<C-d>"] = {"<C-d>zz", 'go down 1/2 screen'},
+        ["<C-u>"] = {"<C-u>zz", 'go up 1/2 screen'},
 
-    --- 
-    ["n"] = {"nzzzv", 'go to next search result'},
-    ["N"] = {"Nzzzv", 'go to prev search result'},
+        --- 
+        ["n"] = {"nzzzv", 'go to next search result'},
+        ["N"] = {"Nzzzv", 'go to prev search result'},
 
-    -- save
-    ["<C-s>"] = { "<cmd> w <CR>", "Save file" },
+        -- save
+        ["<C-s>"] = { "<cmd> w <CR>", "Save file" },
 
-    -- Copy all
-    ["<C-c>"] = { "<cmd> %y+ <CR>", "Copy whole file" },
+        -- Copy all
+        ["<C-c>"] = { "<cmd> %y+ <CR>", "Copy whole file" },
 
-    -- line numbers
-    ["<leader>n"] = { "<cmd> set nu! <CR>", "Toggle line number" },
-    ["<leader>rn"] = { "<cmd> set rnu! <CR>", "Toggle relative number" },
+        -- line numbers
+        ["<leader>n"] = { "<cmd> set nu! <CR>", "Toggle line number" },
+        ["<leader>rn"] = { "<cmd> set rnu! <CR>", "Toggle relative number" },
 
-    -- Allow moving the cursor through wrapped lines with j, k, <Up> and <Down>
-    -- http://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
-    -- empty mode is same as using <cmd> :map
-    -- also don't use g[j|k] when in operator pending mode, so it doesn't alter d, y or c behaviour
-    ["j"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "Move down", opts = { expr = true } },
-    ["k"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up", opts = { expr = true } },
-    ["<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up", opts = { expr = true } },
-    ["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "Move down", opts = { expr = true } },
+        -- Allow moving the cursor through wrapped lines with j, k, <Up> and <Down>
+        -- http://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
+        -- empty mode is same as using <cmd> :map
+        -- also don't use g[j|k] when in operator pending mode, so it doesn't alter d, y or c behaviour
+        ["j"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "Move down", opts = { expr = true } },
+        ["k"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up", opts = { expr = true } },
+        ["<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up", opts = { expr = true } },
+        ["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "Move down", opts = { expr = true } },
 
-    -- new buffer
-    ["<leader>b"] = { "<cmd> enew <CR>", "New buffer" },
+        -- new buffer
 
-    ["<leader>fm"] = {
-      function()
-        vim.lsp.buf.format { async = true }
-      end,
-      "LSP formatting",
-    },
+        ["<leader>fm"] = {
+            function()
+                vim.lsp.buf.format { async = true }
+            end,
+            "LSP formatting",
+        },
   },
 
   t = {
@@ -446,6 +448,28 @@ M.harpoon = {
         },
     }
 
+}
+
+M.blankline = {
+  plugin = true,
+
+  n = {
+    ["<leader>cc"] = {
+      function()
+        local ok, start = require("indent_blankline.utils").get_current_context(
+          vim.g.indent_blankline_context_patterns,
+          vim.g.indent_blankline_use_treesitter_scope
+        )
+
+        if ok then
+          vim.api.nvim_win_set_cursor(vim.api.nvim_get_current_win(), { start, 0 })
+          vim.cmd [[normal! _]]
+        end
+      end,
+
+      "Jump to current context",
+    },
+  },
 }
 
 return M

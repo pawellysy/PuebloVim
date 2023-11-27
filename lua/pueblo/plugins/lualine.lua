@@ -1,7 +1,169 @@
 return {
-    'nvim-lualine/lualine.nvim',
-    event = 'VeryLazy',
-    config = function ()
-        require('lualine').setup()
+    "nvim-lualine/lualine.nvim",
+     event = "VeryLazy",
+    config = function()
+        require("lualine").setup()
     end
 }
+-- local function cwd()
+--   return realpath(vim.loop.cwd()) or ""
+-- end
+--
+-- local function realpath(path)
+--   if path == "" or path == nil then
+--     return nil
+--   end
+--   path = vim.loop.fs_realpath(path) or path
+--   return Util.norm(path)
+-- end
+--
+-- local function pretty_path(opts)
+--   opts = vim.tbl_extend("force", {
+--     relative = "cwd",
+--     modified_hl = "Constant",
+--   }, opts or {})
+--
+--   return function(self)
+--     local path = vim.fn.expand("%:p") --[[@as string]]
+--
+--     if path == "" then
+--       return ""
+--     end
+--     local root = Util.root.get({ normalize = true })
+--     local cwd = Util.root.cwd()
+--
+--     if opts.relative == "cwd" and path:find(cwd, 1, true) == 1 then
+--       path = path:sub(#cwd + 2)
+--     else
+--       path = path:sub(#root + 2)
+--     end
+--
+--     local sep = package.config:sub(1, 1)
+--     local parts = vim.split(path, "[\\/]")
+--     if #parts > 3 then
+--       parts = { parts[1], "…", parts[#parts - 1], parts[#parts] }
+--     end
+--
+--     if opts.modified_hl and vim.bo.modified then
+--       parts[#parts] = M.format(self, parts[#parts], opts.modified_hl)
+--     end
+--
+--     return table.concat(parts, sep)
+--   end
+-- end
+--
+--
+--
+-- local function fg(name)
+--   ---@type {foreground?:number}?
+--   ---@diagnostic disable-next-line: deprecated
+--   local hl = vim.api.nvim_get_hl and vim.api.nvim_get_hl(0, { name = name }) or vim.api.nvim_get_hl_by_name(name, true)
+--   ---@diagnostic disable-next-line: undefined-field
+--   local fga = hl and (hl.fg or hl.foreground)
+--   return fga and { fg = string.format("#%06x", fga) } or nil
+-- end
+--
+-- return {
+-- 	"nvim-lualine/lualine.nvim",
+-- 	event = "VeryLazy",
+-- 	init = function()
+-- 		vim.g.lualine_laststatus = vim.o.laststatus
+-- 		if vim.fn.argc(-1) > 0 then
+-- 			vim.o.statusline = " "
+-- 		else
+-- 			vim.o.laststatus = 0
+-- 		end
+-- 	end,
+-- 	config = function()
+-- 		require("lualine").setup()
+-- 	end,
+--      opts = function()
+--     -- PERF: we don't need this lualine require madness 🤷
+--     local lualine_require = require("lualine_require")
+--     lualine_require.require = require
+--
+--     local icons = require("lazyvim.config").icons
+--
+--     vim.o.laststatus = vim.g.lualine_laststatus
+--
+--     return {
+--       options = {
+--         theme = "auto",
+--         globalstatus = true,
+--         disabled_filetypes = { statusline = { "dashboard", "alpha", "starter" } },
+--       },
+--       sections = {
+--         lualine_a = { "mode" },
+--         lualine_b = { "branch" },
+--
+--         lualine_c = {
+--           -- root_dir(),
+--           {
+--             "diagnostics",
+--             symbols = {
+--               error = icons.diagnostics.Error,
+--               warn = icons.diagnostics.Warn,
+--               info = icons.diagnostics.Info,
+--               hint = icons.diagnostics.Hint,
+--             },
+--           },
+--           { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
+--           { pretty_path() },
+--         },
+--         lualine_x = {
+--           -- stylua: ignore
+--           {
+--             function() return require("noice").api.status.command.get() end,
+--             cond = function() return package.loaded["noice"] and require("noice").api.status.command.has() end,
+--             color = fg("Statement"),
+--           },
+--           -- stylua: ignore
+--           {
+--             function() return require("noice").api.status.mode.get() end,
+--             cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
+--             color = fg("Constant"),
+--           },
+--           -- stylua: ignore
+--           {
+--             function() return "  " .. require("dap").status() end,
+--             cond = function () return package.loaded["dap"] and require("dap").status() ~= "" end,
+--             color = fg("Debug"),
+--           },
+--           {
+--             require("lazy.status").updates,
+--             cond = require("lazy.status").has_updates,
+--             color = fg("Special"),
+--           },
+--           {
+--             "diff",
+--             symbols = {
+--               added = icons.git.added,
+--               modified = icons.git.modified,
+--               removed = icons.git.removed,
+--             },
+--             source = function()
+--               local gitsigns = vim.b.gitsigns_status_dict
+--               if gitsigns then
+--                 return {
+--                   added = gitsigns.added,
+--                   modified = gitsigns.changed,
+--                   removed = gitsigns.removed,
+--                 }
+--               end
+--             end,
+--           },
+--         },
+--         lualine_y = {
+--           { "progress", separator = " ", padding = { left = 1, right = 0 } },
+--           { "location", padding = { left = 0, right = 1 } },
+--         },
+--         lualine_z = {
+--           function()
+--             return " " .. os.date("%R")
+--           end,
+--         },
+--       },
+--       extensions = { "neo-tree", "lazy" },
+--     }
+--   end,
+-- }
