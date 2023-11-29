@@ -18,8 +18,8 @@ M.general = {
   n = {
         ["<tab>"] = {"<cmd>bnext<CR>", "go to next buffer"},
         ["<S-tab>"] = {"<cmd>bprev<CR>", "go to prev buffer"},
-        ['<leader>b']= {':BufDel<CR>', "close all other buffers"},
-        ["<leader>x"] = {"<cmd>bd<CR>", "go to prev buffer"},
+        -- ['<leader>b']= {':BufDel<CR>', "close all other buffers"},
+        ["<leader>x"] = {"<cmd>bd<CR>", "close buffer"},
         ["<Esc>"] = { "<cmd>noh<CR>", "Clear highlights" },
         ["<leader>ss"] = {"<cmd>wa<CR>", "save all files"},
         ["<leader>lg"] = {"<cmd>LazyGit<CR>", "Open LazyGit"},
@@ -450,26 +450,10 @@ M.harpoon = {
 
 }
 
-M.blankline = {
-  plugin = true,
-
-  n = {
-    ["<leader>cc"] = {
-      function()
-        local ok, start = require("indent_blankline.utils").get_current_context(
-          vim.g.indent_blankline_context_patterns,
-          vim.g.indent_blankline_use_treesitter_scope
-        )
-
-        if ok then
-          vim.api.nvim_win_set_cursor(vim.api.nvim_get_current_win(), { start, 0 })
-          vim.cmd [[normal! _]]
-        end
-      end,
-
-      "Jump to current context",
-    },
-  },
+M.symbolsoutline = {
+    n = {
+        ["<leader>so"] = { "<cmd>SymbolsOutline<CR>", 'Show Symbols Outline' }
+    }
 }
 
 return M

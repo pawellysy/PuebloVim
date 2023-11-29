@@ -3,6 +3,7 @@ return {
     event = "VeryLazy",
 
     config = function()
+        require('pueblo.utils').load_mappings('symbolsoutline')
         require("symbols-outline").setup()
     end,
 }
