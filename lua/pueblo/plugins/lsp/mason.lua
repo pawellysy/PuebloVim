@@ -3,17 +3,6 @@
         dependencies = {
             "williamboman/mason-lspconfig.nvim",
         },
-        opts = {
-            ensure_installed = {
-                "eslint_d",
-                "eslint-lsp",
-                'cssls',
-                "typescript-language-server",
-                "prettier",
-                "biome",
-                "js-debug-adapter"
-            }
-        },
         config = function()
             -- import mason
             local mason = require("mason")
@@ -38,13 +27,10 @@
                     "tsserver",
                     "html",
                     "cssls",
-                    "tailwindcss",
-                    "svelte",
+                    'cssls',
+                    "biome",
                     "lua_ls",
-                    "graphql",
-                    "emmet_ls",
-                    "prismals",
-                    "pyright",
+                    'rust_analyzer',
                 },
                 -- auto-install configured servers (with lspconfig)
                 automatic_installation = true, -- not the same as ensure_installed
