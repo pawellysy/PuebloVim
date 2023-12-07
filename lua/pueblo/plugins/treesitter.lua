@@ -59,6 +59,8 @@ return {
             "bash",
             "c",
             "diff",
+            'ron',
+            'rust',
             "html",
             "javascript",
             "jsdoc",

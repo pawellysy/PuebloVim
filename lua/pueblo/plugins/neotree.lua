@@ -15,7 +15,7 @@ return {
         }
     },
     keys = {
-        { "<leader>e", "<cmd>Neotree<CR>", desc = "show Tree Structure", remap = true },
+        { "<leader>e", "<cmd>Neotree<CR>", desc = "Toggle neotree", remap = true },
     },
     config = function(_, opts)
 

@@ -265,7 +265,7 @@ M.telescope = {
     n = {
         -- find
         ["<leader>ff"] = { "<cmd> Telescope find_files <CR>", "Find files" },
-        ["<leader>ft"] = { "<cmd> Telescope lsp_document_symbols <CR>", "Find symbols in the current document" },
+        ["<leader>fs"] = { "<cmd> Telescope lsp_document_symbols <CR>", "Find symbols in the current document" },
         ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "Find all" },
         ["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "Live grep" },
         ["<leader>fb"] = { "<cmd> Telescope buffers <CR>", "Find buffers" },

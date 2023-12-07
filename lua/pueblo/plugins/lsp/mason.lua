@@ -29,6 +29,7 @@
                     "cssls",
                     'cssls',
                     "biome",
+                    "codelldb",
                     "lua_ls",
                     'rust_analyzer',
                 },

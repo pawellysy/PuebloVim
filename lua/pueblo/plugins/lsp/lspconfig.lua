@@ -24,6 +24,25 @@ return {
         end
 
 
+        lspconfig['rust_analyzer'].setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+            settings = {
+                ["rust-analyzer"] = {
+                    assist = {
+                        importGranularity = "module",
+                        importPrefix = "by_self",
+                    },
+                    cargo = {
+                        loadOutDirsFromCheck = true
+                    },
+                    procMacro = {
+                        enable = true
+                    },
+                }
+            }
+        })
+        -- lspconfig
         -- configure typescript server with plugin
         lspconfig["tsserver"].setup({
             capabilities = capabilities,
