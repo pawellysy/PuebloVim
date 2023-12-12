@@ -25,7 +25,7 @@ M.general = {
         ["<leader>lg"] = { "<cmd>LazyGit<CR>", "Open LazyGit" },
         -- switch between windows "<leader>d"
         --
-        ["<leader>d"] = { "\"_d", "delete to black hole register" },
+        ["<leader>d"] = { "<cmd>BufferLineCloseOthers<CR>", "Delete other buffers" },
         ["<C-h>"] = { "<C-w>h", "Window left" },
         ["<C-l>"] = { "<C-w>l", "Window right" },
         ["<C-j>"] = { "<C-w>j", "Window down" },

@@ -4,7 +4,7 @@ return {
     event = "VeryLazy",
     config = function()
         require('ibl').setup({
-            scope = { enabled = false },
+            scope = { enabled = true },
             exclude = {
                 filetypes = {
                     "help",
