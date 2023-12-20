@@ -25,7 +25,7 @@ M.general = {
         ["<leader>lg"] = { "<cmd>LazyGit<CR>", "Open LazyGit" },
         -- switch between windows "<leader>d"
         --
-        ["<leader>d"] = { "<cmd>BufferLineCloseOthers<CR>", "Delete other buffers" },
+        ["<leader>d"] = { "<cmd>BufferLineCloseOthers<CR>", "close other buffers" },
         ["<C-h>"] = { "<C-w>h", "Window left" },
         ["<C-l>"] = { "<C-w>l", "Window right" },
         ["<C-j>"] = { "<C-w>j", "Window down" },
@@ -70,6 +70,10 @@ M.general = {
 
     t = {
         ["<C-x>"] = { vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true), "Escape terminal mode" },
+        ["<C-j>"] = { vim.api.nvim_replace_termcodes("<C-\\><C-N><C-w>j", true, true, true), "Move from terminal to window down" },
+        ["<C-k>"] = { vim.api.nvim_replace_termcodes("<C-\\><C-N><C-w>k", true, true, true), "Move from terminal to window up" },
+        ["<C-h>"] = { vim.api.nvim_replace_termcodes("<C-\\><C-N><C-w>h", true, true, true), "Move from terminal to window left" },
+        ["<C-l>"] = { vim.api.nvim_replace_termcodes("<C-\\><C-N><C-w>l", true, true, true), "Move from terminal to window right" },
     },
 
     v = {
@@ -456,27 +460,36 @@ M.symbolsoutline = {
     }
 }
 
-M.dap = {
+-- M.dap = {
+--
+--     n = {
+--
+--         ['<Leader>dc'] = { function() require("dap").continue() end, 'Debug start/continue' },
+--         ['<Leader>do'] = { function() require("dap").step_over() end, 'Debug step over' },
+--         ['<Leader>di'] = { function() require("dap").step_into() end, 'Debug step into' },
+--         ['<Leader>du'] = { function() require("dap").step_out() end, 'Debug step out' },
+--         ['<Leader>db'] = { function() require("dap").toggle_breakpoint() end, 'Debug toggle breakpoint' },
+--         ['<Leader>dB'] = { function() require("dap").set_breakpoint() end, 'Debug set breakpoint' },
+--         ['<Leader>dr'] = { function() require("dap").repl.open() end, 'Debug open REPL' },
+--         ['<Leader>dR'] = { function() require("dap").repl.close() end, 'Debug close REPL' },
+--         ['<Leader>dl'] = { function() require("dap").run_last() end, 'Debug run last' },
+--         ['<Leader>dlp'] = { function() require("dap").set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end, 'Debug set breackpoint with log message' },
+--         ['<Leader>ds'] = { function() require("dap").terminate({}, {}, function() print "DAP session finished" end) end, 'Debug stop/delete session' },
+--         ['<Leader>dh'] = { function() require('dap.ui.widgets').hover() end, 'Debug widgets hover' },
+--         ['<Leader>dp'] = { function() require('dap.ui.widgets').preview() end, 'Debug widgets preview' },
+--         ['<Leader>dF'] = { function() require('dap.ui.widgets').centered_float(require('dap.ui.widgets').frames) end, 'Debug widgets frames' },
+--         ['<Leader>dS'] = { function() require('dap.ui.widgets').centered_float(require('dap.ui.widgets').scopes) end, 'Debug widgets scopes' }
+--
+--     }
+-- }
 
+M.terminal = {
     n = {
-
-        ['<Leader>dc'] = { function() require("dap").continue() end, 'Debug start/continue' },
-        ['<Leader>do'] = { function() require("dap").step_over() end, 'Debug step over' },
-        ['<Leader>di'] = { function() require("dap").step_into() end, 'Debug step into' },
-        ['<Leader>du'] = { function() require("dap").step_out() end, 'Debug step out' },
-        ['<Leader>db'] = { function() require("dap").toggle_breakpoint() end, 'Debug toggle breakpoint' },
-        ['<Leader>dB'] = { function() require("dap").set_breakpoint() end, 'Debug set breakpoint' },
-        ['<Leader>dr'] = { function() require("dap").repl.open() end, 'Debug open REPL' },
-        ['<Leader>dR'] = { function() require("dap").repl.close() end, 'Debug close REPL' },
-        ['<Leader>dl'] = { function() require("dap").run_last() end, 'Debug run last' },
-        ['<Leader>dlp'] = { function() require("dap").set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end, 'Debug set breackpoint with log message' },
-        ['<Leader>ds'] = { function() require("dap").terminate({}, {}, function() print "DAP session finished" end) end, 'Debug stop/delete session' },
-        ['<Leader>dh'] = { function() require('dap.ui.widgets').hover() end, 'Debug widgets hover' },
-        ['<Leader>dp'] = { function() require('dap.ui.widgets').preview() end, 'Debug widgets preview' },
-        ['<Leader>dF'] = { function() require('dap.ui.widgets').centered_float(require('dap.ui.widgets').frames) end, 'Debug widgets frames' },
-        ['<Leader>dS'] = { function() require('dap.ui.widgets').centered_float(require('dap.ui.widgets').scopes) end, 'Debug widgets scopes' }
-
+        ['<C-g>'] = {"<cmd>ToggleTerm<CR>", "Show terminal"},
+    },
+    t = {
+        ['<C-g>'] = {"<cmd>ToggleTerm<CR>", "Show terminal"},
     }
-}
 
+}
 return M
