@@ -26,7 +26,7 @@ opt.mouse = "a"
 opt.number = true
 opt.scrolloff = 4
 opt.numberwidth = 2
-opt.colorcolumn = '80'
+-- opt.colorcolumn = '80'
 opt.ruler = false
 opt.foldcolumn='1'
 
