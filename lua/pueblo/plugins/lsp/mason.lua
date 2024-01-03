@@ -27,6 +27,7 @@
                     "tsserver",
                     "html",
                     "cssls",
+                    'svelte',
                     'cssls',
                     "biome",
                     -- "codelldb",
