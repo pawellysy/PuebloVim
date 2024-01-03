@@ -77,6 +77,7 @@ return {
             "toml",
             "tsx",
             "typescript",
+            "svelte",
             "vim",
             "vimdoc",
             "yaml",

@@ -41,13 +41,19 @@ return {
                     },
                 }
             }
-        })
+        });
         -- lspconfig
         -- configure typescript server with plugin
         lspconfig["tsserver"].setup({
             capabilities = capabilities,
             on_attach = on_attach,
         })
+
+        lspconfig.svelte.setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+        })
+
         lspconfig["cssls"].setup({
             capabilities = capabilities,
             on_attach = on_attach,

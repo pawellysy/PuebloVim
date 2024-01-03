@@ -488,7 +488,7 @@ M.terminal = {
         ['<C-g>'] = {"<cmd>ToggleTerm<CR>", "Show terminal"},
     },
     t = {
-        ['<C-g>'] = {"<cmd>ToggleTerm<CR>", "Show terminal"},
+        ['<C-g>'] = {"<cmd>ToggleTerm<CR>", "Hide terminal"},
     }
 
 }
