@@ -5,7 +5,7 @@ return {
         -- enabled = false,
         config = function ()
             require("tokyonight").setup({
-                -- transparent = true,
+                transparent = true,
                 style = "night",
                 on_highlights = function(hl, c)
                     local prompt = "#2d3149"
