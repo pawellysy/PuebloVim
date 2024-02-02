@@ -95,6 +95,12 @@ M.general = {
     },
 }
 
+M.gitsigns = {
+    n = {
+        ["<leader>gp"] = { "<cmd>lua require('gitsigns').preview_hunk()<CR>", "Preview hunk" },
+        ["<leader>gb"] = { "<cmd>lua require('gitsigns').blame_line()<CR>", "Blame line" },
+    }
+}
 
 M.comment = {
     plugin = true,
