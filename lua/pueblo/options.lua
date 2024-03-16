@@ -12,8 +12,7 @@ opt.cursorline = true
 opt.expandtab = true
 opt.shiftwidth = 4
 opt.smartindent = true
-vim.api.nvim_set_hl(0 , "Normal", {bg = "none"})
-vim.api.nvim_set_hl(0 , "NormalFloat", {bg = "none"})
+vim.api.nvim_set_hl(0 , "Normal", {})
 opt.tabstop = 4
 opt.softtabstop = 4
 opt.relativenumber = true
