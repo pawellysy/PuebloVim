@@ -9,7 +9,12 @@ return {
     branch = "v3.x",
     cmd = "Neotree",
     opts = {
+        window = {
+            position = 'right'
+        },
+
         filesystem = {
+            hide_dotfiles = false,
             bind_to_cwd = false,
             follow_current_file = { enabled = true }
         }
