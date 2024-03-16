@@ -34,7 +34,8 @@ return {
                         importPrefix = "by_self",
                     },
                     cargo = {
-                        loadOutDirsFromCheck = true
+                        loadOutDirsFromCheck = true,
+                        allFeatures = true
                     },
                     procMacro = {
                         enable = true
@@ -44,6 +45,7 @@ return {
         });
         -- lspconfig
         -- configure typescript server with plugin
+        -- lspvonfi
         lspconfig["tsserver"].setup({
             capabilities = capabilities,
             on_attach = on_attach,
@@ -54,6 +56,8 @@ return {
             on_attach = on_attach,
         })
 
+        lspconfig.biome.setup({
+        })
         lspconfig["cssls"].setup({
             capabilities = capabilities,
             on_attach = on_attach,
