@@ -2,6 +2,11 @@ local M = {}
 -- create a vim shortcut to close all other buffers
 -- vim.api.nvim_set_keymap()
 
+M.globalnote = {
+    n = {
+        ['<leader>gn'] = { '<cmd>GlobalNote<cr>' },
+    }
+}
 M.general = {
     i = {
         -- go to  beginning and end
@@ -21,7 +26,7 @@ M.general = {
         -- ['<leader>b']= {':BufDel<CR>', "close all other buffers"},
         ["<leader>x"] = { "<cmd>bd<CR>", "close buffer" },
         ["<Esc>"] = { "<cmd>noh<CR>", "Clear highlights" },
-        ["<leader>ss"] = { "<cmd>wa<CR>", "save all files" },
+        ["<leader>s"] = { "<cmd>wa<CR>", "save all files" },
         ["<leader>lg"] = { "<cmd>LazyGit<CR>", "Open LazyGit" },
         -- switch between windows "<leader>d"
         --
@@ -46,7 +51,6 @@ M.general = {
         ["<C-c>"] = { "<cmd> %y+ <CR>", "Copy whole file" },
 
         -- line numbers
-        ["<leader>n"] = { "<cmd> set nu! <CR>", "Toggle line number" },
         ["<leader>rn"] = { "<cmd> set rnu! <CR>", "Toggle relative number" },
 
         -- Allow moving the cursor through wrapped lines with j, k, <Up> and <Down>
@@ -93,13 +97,6 @@ M.general = {
         -- https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text#Alternative_mapping_for_paste
         ["p"] = { 'p:let @+=@0<CR>:let @"=@0<CR>', "Dont copy replaced text", opts = { silent = true } },
     },
-}
-
-M.gitsigns = {
-    n = {
-        ["<leader>gp"] = { "<cmd>lua require('gitsigns').preview_hunk()<CR>", "Preview hunk" },
-        ["<leader>gb"] = { "<cmd>lua require('gitsigns').blame_line()<CR>", "Blame line" },
-    }
 }
 
 M.comment = {
@@ -337,6 +334,7 @@ M.gitsigns = {
 
     n = {
         -- Navigation through hunks
+        ["<leader>gp"] = { "<cmd>lua require('gitsigns').preview_hunk()<CR>", "Preview hunk" },
         ["]c"] = {
             function()
                 if vim.wo.diff then
@@ -462,7 +460,7 @@ M.harpoon = {
 
 M.symbolsoutline = {
     n = {
-        ["<leader>so"] = { "<cmd>SymbolsOutline<CR>", 'Show Symbols Outline' }
+        ["<leader>o"] = { "<cmd>SymbolsOutline<CR>", 'Show Symbols Outline' }
     }
 }
 
