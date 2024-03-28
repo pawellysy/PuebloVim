@@ -1,41 +1,45 @@
 {
-	"organizeImports": {
-		"enabled": true
-	},
-	"formatter": {
-		"enabled": true,
-		"formatWithErrors": true,
-		"indentStyle": "space",
-		"indentSize": 4,
-		"lineWidth": 90
-	},
-	"javascript": {
-		"formatter": {
-			"quoteStyle": "single",
+    "organizeImports": {
+        "enabled": false 
+    },
+    "formatter": {
+        "enabled": true,
+        "formatWithErrors": true,
+        "indentStyle": "space",
+        "indentWidth": 4,
+        "lineWidth": 80
+    },
+    "javascript": {
+        "formatter": {
+            "quoteStyle": "single",
             "trailingComma": "none",
-			"jsxQuoteStyle": "single"
-		},
-		"globals": ["__DEV__"]
-	},
-	"linter": {
-		"enabled": true,
-		"ignore": ["node_modules"],
-		"rules": {
-			"all": true,
-			"complexity": {
-				"noUselessFragments": "off"
-			},
-			"style": {
-				"useSingleVarDeclarator": "off",
-				"noParameterAssign": "off",
-				"noNonNullAssertion": "off"
-			},
-			"suspicious": {
-				"noExplicitAny": "off"
-			},
-			"nursery": {
-				"all": false
-			}
-		}
-	}
+            "jsxQuoteStyle": "single"
+        },
+        "globals": ["__DEV__"]
+    },
+    "json": {
+        "formatter": {
+        }
+    },
+    "linter": {
+        "enabled": true,
+        "ignore": ["node_modules"],
+        "rules": {
+            "all": true,
+            "complexity": {
+                "noUselessFragments": "off"
+            },
+            "style": {
+                "useSingleVarDeclarator": "off",
+                "noParameterAssign": "off",
+                "noNonNullAssertion": "off"
+            },
+            "suspicious": {
+                "noExplicitAny": "off"
+            },
+            "nursery": {
+                "all": false
+            }
+        }
+    }
 }

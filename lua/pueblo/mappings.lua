@@ -2,6 +2,15 @@ local M = {}
 -- create a vim shortcut to close all other buffers
 -- vim.api.nvim_set_keymap()
 
+-- M.oil = {
+--     n = {
+--         ['<leader>e'] = { function ()
+--             vim.cmd('60vsplit')
+--             require('oil').open()
+--         end},
+--     }
+-- }
+
 M.globalnote = {
     n = {
         ['<leader>gn'] = { '<cmd>GlobalNote<cr>' },
@@ -36,6 +45,7 @@ M.general = {
         ["<C-j>"] = { "<C-w>j", "Window down" },
         ["<C-k>"] = { "<C-w>k", "Window up" },
         ["J"] = { "mzJ`z", 'move next line to the same line' },
+
         -- move 1/2 screen
         ["<C-d>"] = { "<C-d>zz", 'go down 1/2 screen' },
         ["<C-u>"] = { "<C-u>zz", 'go up 1/2 screen' },
@@ -61,8 +71,6 @@ M.general = {
         ["k"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up", opts = { expr = true } },
         ["<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up", opts = { expr = true } },
         ["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "Move down", opts = { expr = true } },
-
-        -- new buffer
 
         ["<leader>fm"] = {
             function()
@@ -105,6 +113,7 @@ M.gitsigns = {
         ["<leader>gb"] = { "<cmd>lua require('gitsigns').blame_line()<CR>", "Blame line" },
     }
 }
+
 M.comment = {
     plugin = true,
 

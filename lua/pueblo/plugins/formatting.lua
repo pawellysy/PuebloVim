@@ -9,8 +9,7 @@ return {
             function()
                 require("conform").format { async = true, lsp_fallback = true }
             end,
-            mode = "v",
-            desc = "Format the selected part",
+            desc = "format the whole file",
         },
     },
     opts = {
@@ -18,8 +17,9 @@ return {
         formatters_by_ft = {
             javascript = { { "biome" } },
             typescript = { { "biome" } },
-
+            json = { { "biome" } }
         },
+
         formatters = {
             shfmt = {
                 prepend_args = { "-i", "2" },

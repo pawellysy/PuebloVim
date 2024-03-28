@@ -58,10 +58,12 @@ return {
 
         lspconfig.biome.setup({
         })
+
         lspconfig["cssls"].setup({
             capabilities = capabilities,
             on_attach = on_attach,
         })
+
         lspconfig["lua_ls"].setup({
             capabilities = capabilities,
             on_attach = on_attach,
