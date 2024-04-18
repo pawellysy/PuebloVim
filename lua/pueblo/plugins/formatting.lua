@@ -17,6 +17,10 @@ return {
         formatters_by_ft = {
             javascript = { { "biome" } },
             typescript = { { "biome" } },
+            jsx = { { "biome" } },
+            tsx = { { "biome" } },
+            svelte = { { "biome" } },
+            vue = { { "biome" } },
             json = { { "biome" } }
         },
 
