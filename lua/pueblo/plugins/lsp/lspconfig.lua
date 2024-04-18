@@ -5,15 +5,14 @@ return {
         "hrsh7th/cmp-nvim-lsp",
         { "antosha417/nvim-lsp-file-operations", config = true },
     },
-    config = function ()
+    config = function()
         local lspconfig = require("lspconfig")
 
         -- import cmp-nvim-lsp plugin
         local cmp_nvim_lsp = require("cmp_nvim_lsp")
         local on_attach = function(client, bufnr)
             local utils = require('pueblo.utils')
-            utils.load_mappings('lspconfig', {buffer = bufnr})
-
+            utils.load_mappings('lspconfig', { buffer = bufnr })
         end
 
         local capabilities = cmp_nvim_lsp.default_capabilities()
@@ -63,6 +62,15 @@ return {
             capabilities = capabilities,
             on_attach = on_attach,
         })
+
+        vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+            pattern = "*.wgsl",
+            callback = function()
+                vim.bo.filetype = "wgsl"
+            end,
+        })
+
+        lspconfig.wgsl_analyzer.setup {}
 
         lspconfig["lua_ls"].setup({
             capabilities = capabilities,
