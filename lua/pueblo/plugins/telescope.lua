@@ -1,10 +1,26 @@
 return {
-    'nvim-telescope/telescope.nvim', tag = '0.1.4',
-    -- or                              , branch = '0.1.x',
-    dependencies = { 'nvim-lua/plenary.nvim' , {'nvim-telescope/telescope-fzy-native.nvim', build = 'make'} },
-    config = function (opts)
+    'nvim-telescope/telescope.nvim',
+    tag = '0.1.4',
+    dependencies = {
+        'nvim-lua/plenary.nvim',
+        { 'nvim-telescope/telescope-fzy-native.nvim', build = 'make' },
+        "sharkdp/fd"
+    },
+    config = function(opts)
         local telescope = require('telescope');
         telescope.setup {
+            defaults = {
+                vimgrep_arguments = {
+                    "rg",
+                    "-L",
+                    "--color=never",
+                    "--no-heading",
+                    "--with-filename",
+                    "--line-number",
+                    "--column",
+                    "--smart-case",
+                }
+            },
             extensions = {
                 fzf = {
                     fuzzy = true,
@@ -14,7 +30,7 @@ return {
                 }
             }
         }
-        -- telescope.load_extension('fzf')
+        telescope.load_extension('fzy_native')
         require('pueblo.utils').load_mappings('telescope')
     end
 }
