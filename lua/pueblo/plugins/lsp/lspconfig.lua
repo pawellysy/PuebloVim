@@ -23,6 +23,12 @@ return {
         end
 
 
+        lspconfig.gopls.setup {
+            on_attach = on_attach,
+            capabilities = capabilities,
+            cmd = {"gopls"},
+            filetypes = {"go", "gomod", "gowork", "gotmpl"}
+        }
         lspconfig['rust_analyzer'].setup({
             capabilities = capabilities,
             on_attach = on_attach,

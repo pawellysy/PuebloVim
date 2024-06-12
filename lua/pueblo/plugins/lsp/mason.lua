@@ -28,6 +28,7 @@
                     "html",
                     "cssls",
                     'svelte',
+                    'gopls',
                     'cssls',
                     "biome",
                     -- "codelldb",
