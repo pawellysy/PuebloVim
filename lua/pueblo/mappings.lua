@@ -2,14 +2,11 @@ local M = {}
 -- create a vim shortcut to close all other buffers
 -- vim.api.nvim_set_keymap()
 
--- M.oil = {
---     n = {
---         ['<leader>e'] = { function ()
---             vim.cmd('60vsplit')
---             require('oil').open()
---         end},
---     }
--- }
+M.oil = {
+    n = {
+        ['-'] = {'<cmd>Oil<cr>'},
+    }
+}
 
 M.globalnote = {
     n = {
@@ -30,16 +27,12 @@ M.general = {
     },
 
     n = {
-        ["<tab>"] = { "<cmd>bnext<CR>", "go to next buffer" },
-        ["<S-tab>"] = { "<cmd>bprev<CR>", "go to prev buffer" },
         -- ['<leader>b']= {':BufDel<CR>', "close all other buffers"},
         ["<leader>x"] = { "<cmd>bd<CR>", "close buffer" },
         ["<Esc>"] = { "<cmd>noh<CR>", "Clear highlights" },
         ["<leader>s"] = { "<cmd>wa<CR>", "save all files" },
         ["<leader>lg"] = { "<cmd>LazyGit<CR>", "Open LazyGit" },
-        -- switch between windows "<leader>d"
         --
-        ["<leader>d"] = { "<cmd>BufferLineCloseOthers<CR>", "close other buffers" },
         -- ["<C-h>"] = { "<C-w>h", "Window left" },
         -- ["<C-l>"] = { "<C-w>l", "Window right" },
         -- ["<C-j>"] = { "<C-w>j", "Window down" },
@@ -93,6 +86,9 @@ M.general = {
         ["<"] = { "<gv", "Indent line" },
         [">"] = { ">gv", "Indent line" },
         ["<leader>d"] = { "\"_d", "delete to black hole register" },
+        ["<leader>y"] = { "\"*y", "yank to system register" },
+        ["<leader>p"] = { "\"*p", "paste from system register" },
+
     },
 
     x = {
@@ -102,13 +98,6 @@ M.general = {
         -- https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text#Alternative_mapping_for_paste
         ["p"] = { 'p:let @+=@0<CR>:let @"=@0<CR>', "Dont copy replaced text", opts = { silent = true } },
     },
-}
-
-M.gitsigns = {
-    n = {
-        ["<leader>gp"] = { "<cmd>lua require('gitsigns').preview_hunk()<CR>", "Preview hunk" },
-        ["<leader>gb"] = { "<cmd>lua require('gitsigns').blame_line()<CR>", "Blame line" },
-    }
 }
 
 M.comment = {
@@ -288,6 +277,7 @@ M.telescope = {
         ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "Find all" },
         ["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "Live grep" },
         ["<leader>fb"] = { "<cmd> Telescope buffers <CR>", "Find buffers" },
+        ["<leader>j"] = { "<cmd> Telescope buffers <CR>", "Find buffers" },
         ["<leader>fh"] = { "<cmd> Telescope help_tags <CR>", "Help page" },
         ["<leader>fo"] = { "<cmd> Telescope oldfiles <CR>", "Find oldfiles" },
         ["<leader>fz"] = { "<cmd> Telescope current_buffer_fuzzy_find <CR>", "Find in current buffer" },
@@ -499,13 +489,4 @@ M.symbolsoutline = {
 --     }
 -- }
 
-M.terminal = {
-    n = {
-        ['<C-g>'] = {"<cmd>ToggleTerm<CR>", "Show terminal"},
-    },
-    t = {
-        ['<C-g>'] = {"<cmd>ToggleTerm<CR>", "Hide terminal"},
-    }
-
-}
 return M
