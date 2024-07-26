@@ -4,7 +4,6 @@ return {
     dependencies = {
         'nvim-lua/plenary.nvim',
         { 'nvim-telescope/telescope-fzy-native.nvim', build = 'make' },
-        "sharkdp/fd"
     },
     config = function(opts)
         local telescope = require('telescope');
@@ -22,10 +21,12 @@ return {
                 }
             },
             extensions = {
+                fzy_native = {
+                    override_generic_sorter = false,
+                    override_file_sorter = true
+                },
                 fzf = {
                     fuzzy = true,
-                    override_generic_sorter = true,
-                    override_file_sorter = true,
                     case_mode = "smart_case",
                 }
             }

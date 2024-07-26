@@ -19,11 +19,6 @@ M.general = {
         ["<C-b>"] = { "<ESC>^i", "Beginning of line" },
         ["<C-e>"] = { "<End>", "End of line" },
 
-        -- navigate within insert mode
-        -- ["<C-h>"] = { "<Left>", "Move left" },
-        -- ["<C-l>"] = { "<Right>", "Move right" },
-        -- ["<C-j>"] = { "<Down>", "Move down" },
-        -- ["<C-k>"] = { "<Up>", "Move up" },
     },
 
     n = {
@@ -33,15 +28,13 @@ M.general = {
         ["<leader>s"] = { "<cmd>wa<CR>", "save all files" },
         ["<leader>lg"] = { "<cmd>LazyGit<CR>", "Open LazyGit" },
         --
-        -- ["<C-h>"] = { "<C-w>h", "Window left" },
-        -- ["<C-l>"] = { "<C-w>l", "Window right" },
-        -- ["<C-j>"] = { "<C-w>j", "Window down" },
-        -- ["<C-k>"] = { "<C-w>k", "Window up" },
         ["J"] = { "mzJ`z", 'move next line to the same line' },
 
         -- move 1/2 screen
         ["<C-d>"] = { "<C-d>zz", 'go down 1/2 screen' },
         ["<C-u>"] = { "<C-u>zz", 'go up 1/2 screen' },
+        ["<C-.>"] = { "<C-w>>", 'make window wider' },
+        ["<C-,>"] = { "<C-w><", 'make window narrower' },
 
         ---
         ["n"] = { "nzzzv", 'go to next search result' },
@@ -272,7 +265,7 @@ M.telescope = {
     plugin = true,
     n = {
         -- find
-        ["<leader>ff"] = { "<cmd> Telescope find_files theme=ivy<CR>", "Find files" },
+        ["<leader>ff"] = { "<cmd> FzfLua files <CR>", "Find files" },
         ["<leader>fs"] = { "<cmd> Telescope lsp_document_symbols <CR>", "Find symbols in the current document" },
         ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "Find all" },
         ["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "Live grep" },
