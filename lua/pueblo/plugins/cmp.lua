@@ -28,7 +28,7 @@ return {
                 ["<c-j>"] = cmp.mapping.select_next_item(),
                 ["<C-Space>"] = cmp.mapping.complete(),
                 ["<C-e>"] = cmp.mapping.abort(),
-                ['<Tab>'] = cmp.mapping(function(fallback)
+                ["<C-l>"] = cmp.mapping(function(fallback)
                     if luasnip.expand_or_jumpable() then
                         luasnip.expand_or_jump()
                     elseif cmp.visible() then
