@@ -23,6 +23,8 @@ M.general = {
 
     n = {
         -- ['<leader>b']= {':BufDel<CR>', "close all other buffers"},
+        ["<leader>n"] = { "<cmd>!osascript -e 'tell application \"Spotify\" to next track'<CR>", "Spotify next track" },
+        ["<leader>p"] = { "<cmd>!osascript -e 'tell application \"Spotify\" to previous track'<CR>", "Spotify previous track" },
         ["<leader>x"] = { "<cmd>bd<CR>", "close buffer" },
         ["<Esc>"] = { "<cmd>noh<CR>", "Clear highlights" },
         ["<leader>s"] = { "<cmd>wa<CR>", "save all files" },
