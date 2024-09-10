@@ -51,7 +51,7 @@ return {
         -- lspconfig
         -- configure typescript server with plugin
         -- lspvonfi
-        lspconfig["tsserver"].setup({
+        lspconfig["ts_ls"].setup({
             capabilities = capabilities,
             on_attach = on_attach,
         })
