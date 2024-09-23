@@ -29,7 +29,8 @@ M.general = {
         ["<Esc>"] = { "<cmd>noh<CR>", "Clear highlights" },
         ["<leader>s"] = { "<cmd>wa<CR>", "save all files" },
         ["<leader>lg"] = { "<cmd>LazyGit<CR>", "Open LazyGit" },
-        --
+        ["0"] = {"^", "go to beginning o the line"},
+        ["^"] = {"0", "go to beginning o the line"},
         ["J"] = { "mzJ`z", 'move next line to the same line' },
 
         -- move 1/2 screen
@@ -116,16 +117,6 @@ M.comment = {
     },
 }
 
--- M.bqf = {
---     plugin = true,
---     n = {
---         ["<C-q>"] = {
---             "<cmd>copen<CR>",
---             "show quickfix window"
---         }
---     }
---
--- }
 M.lspconfig = {
     plugin = true,
 
@@ -484,4 +475,23 @@ M.symbolsoutline = {
 --     }
 -- }
 
+
+M.conform = {
+    n = {
+        ["<leader>="] = {
+            function()
+                require("conform").format { async = true, lsp_fallback = true }
+            end,
+            "Format the whole file",
+        },
+    },
+    v = {
+        ["<leader>="] = {
+            function()
+                require("conform").format { async = true, lsp_fallback = true }
+            end,
+            "Format selection",
+        },
+    }
+}
 return M
