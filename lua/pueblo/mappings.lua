@@ -245,15 +245,6 @@ M.lspconfig = {
     },
 }
 
-M.nvimtree = {
-    plugin = true,
-
-    n = {
-        -- toggle
-        ["<leader>e"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
-    },
-}
-
 M.telescope = {
     plugin = true,
     n = {
@@ -263,10 +254,10 @@ M.telescope = {
         ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "Find all" },
         ["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "Live grep" },
         ["<leader>fb"] = { "<cmd> Telescope buffers <CR>", "Find buffers" },
-        -- ["<leader>j"] = { "<cmd> Telescope buffers <CR>", "Find buffers" },
         ["<leader>fh"] = { "<cmd> Telescope help_tags <CR>", "Help page" },
         ["<leader>fo"] = { "<cmd> Telescope oldfiles <CR>", "Find oldfiles" },
         ["<leader>fz"] = { "<cmd> Telescope current_buffer_fuzzy_find <CR>", "Find in current buffer" },
+
 
         -- git
         ["<leader>cm"] = { "<cmd> Telescope git_commits <CR>", "Git commits" },
@@ -301,15 +292,18 @@ M.blankline = {
     n = {
         ["<leader>cc"] = {
             function()
-                local ok, start = require("indent_blankline.utils").get_current_context(
-                    vim.g.indent_blankline_context_patterns,
-                    vim.g.indent_blankline_use_treesitter_scope
-                )
+local config = { scope = {} }
+  config.scope.exclude = { language = {}, node_type = {} }
+  config.scope.include = { node_type = {} }
+  local node = require("ibl.scope").get(vim.api.nvim_get_current_buf(), config)
 
-                if ok then
-                    vim.api.nvim_win_set_cursor(vim.api.nvim_get_current_win(), { start, 0 })
-                    vim.cmd [[normal! _]]
-                end
+  if node then
+    local start_row, _, end_row, _ = node:range()
+    if start_row ~= end_row then
+      vim.api.nvim_win_set_cursor(vim.api.nvim_get_current_win(), { start_row + 1, 0 })
+      vim.api.nvim_feedkeys("_", "n", true)
+    end
+  end
             end,
 
             "Jump to current context",

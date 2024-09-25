@@ -21,6 +21,6 @@ return {
                 },
             },
         })
-        -- require('pueblo.utils').load_mappings('blankline')
+        require('pueblo.utils').load_mappings('blankline')
     end
 }

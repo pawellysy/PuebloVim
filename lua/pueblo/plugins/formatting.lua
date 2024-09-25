@@ -19,13 +19,13 @@ return {
     opts = {
         -- Define your formatters
         formatters_by_ft = {
-            javascript = { { "biome", 'prettier' } },
-            typescript = { { "biome", 'prettier' } },
-            jsx = { { "biome", 'prettier' } },
-            tsx = { { "biome", 'prettier' } },
-            svelte = { { "biome", 'prettier' } },
-            vue = { { "biome", 'prettier' } },
-            json = { { "biome", 'prettier' } }
+            javascript = { "biome", },
+            typescript = { "biome", },
+            jsx = { "biome", },
+            tsx = { "biome", },
+            svelte = { "biome", },
+            vue = { "biome", },
+            json = { "biome", }
         },
 
         formatters = {
