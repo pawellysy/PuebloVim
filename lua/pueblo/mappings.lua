@@ -32,6 +32,7 @@ M.general = {
         ["0"] = {"^", "go to beginning o the line"},
         ["^"] = {"0", "go to beginning o the line"},
         ["J"] = { "mzJ`z", 'move next line to the same line' },
+        ["<leader>d"] = {"<cmd>BufferLineCloseOthers<CR>", "close all other buffers"},
 
         -- move 1/2 screen
         ["<C-d>"] = { "<C-d>zz", 'go down 1/2 screen' },
