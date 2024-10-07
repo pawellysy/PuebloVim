@@ -1,5 +1,4 @@
 return {
-
- { 'echasnovski/mini.trailspace', version = '*' },
- { 'echasnovski/mini.bufremove', version = '*' }
+    { 'echasnovski/mini.trailspace', version = '*' },
+    { 'echasnovski/mini.bufremove',  version = '*' }
 }
