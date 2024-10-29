@@ -104,6 +104,8 @@ return {
                 ["ia"] = { query = "@paramenter.inner", desc = "Select inner parameter"},
                 ["af"] = { query = "@function.outer", desc = "Select outer function"},
                 ["if"] = { query = "@function.inner", desc = "Select inner function"},
+                ["al"] = { query = "@loop.outer", desc = "Select outer loop"},
+                ["il"] = { query = "@loop.inner", desc = "Select inner loop"},
                 ["ac"] = { query = "@class.outer", desc = "Select outer class"},
                 ["ic"] = { query = "@class.inner", desc = "Select inner class"},
             }

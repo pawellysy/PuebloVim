@@ -22,17 +22,16 @@ M.general = {
     },
 
     n = {
-        -- ['<leader>b']= {':BufDel<CR>', "close all other buffers"},
-        ["<leader>n"] = { "<cmd>!osascript -e 'tell application \"Spotify\" to next track'<CR>", "Spotify next track" },
-        ["<leader>p"] = { "<cmd>!osascript -e 'tell application \"Spotify\" to previous track'<CR>", "Spotify previous track" },
+        ['<leader>d']= {"<cmd>%bd|e#|bd#<cr>", "close all other buffers"},
+        ["<leader>n"] = { "<cmd>MediaControlNext<cr>", "next track" },
+        ["<leader>p"] = { "<cmd>MediaControlPrevious<cr>", "previous track" },
         ["<leader>x"] = { "<cmd>bd<CR>", "close buffer" },
         ["<Esc>"] = { "<cmd>noh<CR>", "Clear highlights" },
         ["<leader>s"] = { "<cmd>wa<CR>", "save all files" },
         ["<leader>lg"] = { "<cmd>LazyGit<CR>", "Open LazyGit" },
-        ["0"] = {"^", "go to beginning o the line"},
+        ["0"] = {"^", "go to first non whitespace char on the line"},
         ["^"] = {"0", "go to beginning o the line"},
         ["J"] = { "mzJ`z", 'move next line to the same line' },
-        ["<leader>d"] = {"<cmd>BufferLineCloseOthers<CR>", "close all other buffers"},
 
         -- move 1/2 screen
         ["<C-d>"] = { "<C-d>zz", 'go down 1/2 screen' },
@@ -252,6 +251,7 @@ M.telescope = {
         -- find
         ["<leader>ff"] = { "<cmd> FzfLua files <CR>", "Find files" },
         ["<leader>fs"] = { "<cmd> Telescope lsp_document_symbols <CR>", "Find symbols in the current document" },
+        ["<leader>fS"] = { "<cmd> Telescope lsp_dynamic_workspace_symbols <CR>", "Find symbols in the workspace" },
         ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "Find all" },
         ["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "Live grep" },
         ["<leader>fb"] = { "<cmd> Telescope buffers <CR>", "Find buffers" },

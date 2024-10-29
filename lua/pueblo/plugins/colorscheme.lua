@@ -1,7 +1,7 @@
 return {
     {
         "folke/tokyonight.nvim",
-        event = "VimEnter",
+        -- event = "VimEnter",
         -- enabled = false,
         config = function ()
             require("tokyonight").setup({
@@ -39,7 +39,7 @@ return {
                 end,
             })
 
-            vim.cmd.colorscheme('tokyonight')
+            -- vim.cmd.colorscheme('tokyonight')
         end
     }, {
         "catppuccin/nvim",
@@ -50,5 +50,16 @@ return {
             require('catppuccin').setup()
             -- vim.cmd.colorscheme('catppuccin')
         end
+    },
+    {
+        "aktersnurra/no-clown-fiesta.nvim",
+        event = "VimEnter",
+        priority = 1001,
+        name = "no-clown-fiesta",
+        config = function ()
+            require('no-clown-fiesta').setup()
+            vim.cmd.colorscheme('no-clown-fiesta')
+        end
+
     }
 }

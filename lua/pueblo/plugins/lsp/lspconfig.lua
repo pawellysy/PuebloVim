@@ -6,6 +6,36 @@ return {
         { "antosha417/nvim-lsp-file-operations", config = true },
     },
     config = function()
+        vim.cmd [[autocmd! ColorScheme * highlight NormalFloat guibg=#1f2335]]
+        vim.cmd [[autocmd! ColorScheme * highlight FloatBorder guifg=white guibg=#1f2335]]
+
+        local border = {
+            { " ", "FloatBorder" },
+            { "▔", "FloatBorder" },
+            { " ", "FloatBorder" },
+            { "▕", "FloatBorder" },
+            { " ", "FloatBorder" },
+            { "▁", "FloatBorder" },
+            { " ", "FloatBorder" },
+            { "▏", "FloatBorder" },
+        }
+
+        -- LSP settings (for overriding per client)
+        local handlers = {
+            ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
+            ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
+        }
+
+        -- Do not forget to use the on_attach function
+
+        -- To instead override globally
+        local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+        function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+            opts = opts or {}
+            opts.border = opts.border or border
+            return orig_util_open_floating_preview(contents, syntax, opts, ...)
+        end
+
         local lspconfig = require("lspconfig")
 
         -- import cmp-nvim-lsp plugin
@@ -22,13 +52,18 @@ return {
             vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
         end
 
-
         lspconfig.gopls.setup {
             on_attach = on_attach,
             capabilities = capabilities,
-            cmd = {"gopls"},
-            filetypes = {"go", "gomod", "gowork", "gotmpl"}
+            cmd = { "gopls" },
+            filetypes = { "go", "gomod", "gowork", "gotmpl" }
         }
+
+        require 'lspconfig'.bufls.setup {
+            on_attach = on_attach,
+            capabilities = capabilities,
+        }
+
         lspconfig['rust_analyzer'].setup({
             capabilities = capabilities,
             on_attach = on_attach,
@@ -56,6 +91,10 @@ return {
             on_attach = on_attach,
         })
 
+        lspconfig.pyright.setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+        })
         lspconfig.svelte.setup({
             capabilities = capabilities,
             on_attach = on_attach,

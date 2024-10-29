@@ -108,7 +108,7 @@ return  {
                     {
                         "diagnostics",
                         symbols = {
-                            error = icons.diagnostics.Error,
+                            error = icons.diagnostics .Error,
                             warn = icons.diagnostics.Warn,
                             info = icons.diagnostics.Info,
                             hint = icons.diagnostics.Hint,
@@ -118,6 +118,12 @@ return  {
                     {'filename', file_status = true, full_path = true},
                 },
                 lualine_x = {
+                    {
+                        function()
+                            local media = require("media-controls");
+                            media.poll_status();
+                            return media.get_status() end,
+                    },
                     -- stylua: ignore
                     {
                         function() return require("noice").api.status.command.get() end,
