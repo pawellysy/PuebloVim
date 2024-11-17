@@ -59,10 +59,12 @@ return {
             filetypes = { "go", "gomod", "gowork", "gotmpl" }
         }
 
-        require 'lspconfig'.bufls.setup {
+        lspconfig.bufls.setup {
             on_attach = on_attach,
             capabilities = capabilities,
         }
+
+
 
         lspconfig['rust_analyzer'].setup({
             capabilities = capabilities,
@@ -83,13 +85,27 @@ return {
                 }
             }
         });
-        -- lspconfig
-        -- configure typescript server with plugin
-        -- lspvonfi
-        lspconfig["ts_ls"].setup({
+        lspconfig.ts_ls.setup {
             capabilities = capabilities,
             on_attach = on_attach,
-        })
+            init_options = {
+                plugins = {
+                    {
+                        name = '@vue/typescript-plugin',
+                        location = '/home/oguz/.local/share/nvim/mason/bin/vue-language-server',
+                        languages = { 'vue' },
+                    },
+                },
+            },
+
+            lspconfig.volar.setup {
+                init_options = {
+                    vue = {
+                        hybridMode = false,
+                    },
+                },
+            }, }
+
 
         lspconfig.pyright.setup({
             capabilities = capabilities,
@@ -106,6 +122,13 @@ return {
         lspconfig["cssls"].setup({
             capabilities = capabilities,
             on_attach = on_attach,
+
+        })
+
+        lspconfig.vtsls.setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+            filetypes = { "vue" }
         })
 
         vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
