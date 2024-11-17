@@ -57,6 +57,8 @@ return {
         indent = { enable = true },
         ensure_installed = {
             "bash",
+            'vue',
+            'css',
             "c",
             "diff",
             'ron',
