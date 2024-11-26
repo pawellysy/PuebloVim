@@ -1,12 +1,7 @@
 return {
-      "leath-dub/snipe.nvim",
-      config = function()
-        local snipe = require("snipe")
-        snipe.setup({
-            ui = {
-                position  = 'cursor'
-            }
-        })
-        vim.keymap.set("n", "<leader>j", snipe.create_buffer_menu_toggler())
-      end
+  "leath-dub/snipe.nvim",
+  keys = {
+    {"<leader>j", function () require("snipe").open_buffer_menu() end, desc = "Open Snipe buffer menu"}
+  },
+  opts = {}
 }

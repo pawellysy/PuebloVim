@@ -4,7 +4,7 @@ local M = {}
 
 M.oil = {
     n = {
-        ['-'] = {'<cmd>Oil<cr>'},
+        ['-'] = { '<cmd>Oil<cr>' },
     }
 }
 
@@ -22,15 +22,15 @@ M.general = {
     },
 
     n = {
-        ['<leader>d']= {"<cmd>%bd|e#|bd#<cr>", "close all other buffers"},
+        ['<leader>d'] = { "<cmd>%bd|e#|bd#<cr>", "close all other buffers" },
         ["<leader>n"] = { "<cmd>MediaControlNext<cr>", "next track" },
         ["<leader>p"] = { "<cmd>MediaControlPrevious<cr>", "previous track" },
         ["<leader>x"] = { "<cmd>bp|bd#<CR>", "close buffer" },
         ["<Esc>"] = { "<cmd>noh<CR>", "Clear highlights" },
         ["<leader>s"] = { "<cmd>wa<CR>", "save all files" },
         ["<leader>lg"] = { "<cmd>LazyGit<CR>", "Open LazyGit" },
-        ["0"] = {"^", "go to first non whitespace char on the line"},
-        ["^"] = {"0", "go to beginning o the line"},
+        ["0"] = { "^", "go to first non whitespace char on the line" },
+        ["^"] = { "0", "go to beginning o the line" },
         ["J"] = { "mzJ`z", 'move next line to the same line' },
 
         -- move 1/2 screen
@@ -235,6 +235,9 @@ M.lspconfig = {
         },
     },
 
+    i = {
+        ["<c-k>"] = { function() vim.lsp.buf.signature_help() end, "Signature Help" }
+    },
     v = {
         ["<leader>ca"] = {
             function()
@@ -293,18 +296,18 @@ M.blankline = {
     n = {
         ["<leader>cc"] = {
             function()
-local config = { scope = {} }
-  config.scope.exclude = { language = {}, node_type = {} }
-  config.scope.include = { node_type = {} }
-  local node = require("ibl.scope").get(vim.api.nvim_get_current_buf(), config)
+                local config = { scope = {} }
+                config.scope.exclude = { language = {}, node_type = {} }
+                config.scope.include = { node_type = {} }
+                local node = require("ibl.scope").get(vim.api.nvim_get_current_buf(), config)
 
-  if node then
-    local start_row, _, end_row, _ = node:range()
-    if start_row ~= end_row then
-      vim.api.nvim_win_set_cursor(vim.api.nvim_get_current_win(), { start_row + 1, 0 })
-      vim.api.nvim_feedkeys("_", "n", true)
-    end
-  end
+                if node then
+                    local start_row, _, end_row, _ = node:range()
+                    if start_row ~= end_row then
+                        vim.api.nvim_win_set_cursor(vim.api.nvim_get_current_win(), { start_row + 1, 0 })
+                        vim.api.nvim_feedkeys("_", "n", true)
+                    end
+                end
             end,
 
             "Jump to current context",
