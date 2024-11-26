@@ -3,14 +3,14 @@ return {
     event = 'VimEnter',
     opts = function()
         local logo = [[
-       ▄███████▄ ███    █▄     ▄████████ ▀█████████▄   ▄█        ▄██████▄  
-       ███    ███ ███    ███   ███    ███   ███    ███ ███       ███    ███ 
-       ███    ███ ███    ███   ███    █▀    ███    ███ ███       ███    ███ 
-       ███    ███ ███    ███  ▄███▄▄▄      ▄███▄▄▄██▀  ███       ███    ███ 
-     ▀█████████▀  ███    ███ ▀▀███▀▀▀     ▀▀███▀▀▀██▄  ███       ███    ███ 
-       ███        ███    ███   ███    █▄    ███    ██▄ ███       ███    ███ 
-       ███        ███    ███   ███    ███   ███    ███ ███▌    ▄ ███    ███ 
-      ▄████▀      ████████▀    ██████████ ▄█████████▀  █████▄▄██  ▀██████▀  
+       ▄███████▄ ███    █▄     ▄████████ ▀█████████▄   ▄█        ▄██████▄
+       ███    ███ ███    ███   ███    ███   ███    ███ ███       ███    ███
+       ███    ███ ███    ███   ███    █▀    ███    ███ ███       ███    ███
+       ███    ███ ███    ███  ▄███▄▄▄      ▄███▄▄▄██▀  ███       ███    ███
+     ▀█████████▀  ███    ███ ▀▀███▀▀▀     ▀▀███▀▀▀██▄  ███       ███    ███
+       ███        ███    ███   ███    █▄    ███    ██▄ ███       ███    ███
+       ███        ███    ███   ███    ███   ███    ███ ███▌    ▄ ███    ███
+      ▄████▀      ████████▀    ██████████ ▄█████████▀  █████▄▄██  ▀██████▀
     ]]
 
         logo = string.rep("\n", 8) .. logo .. "\n\n"
@@ -26,10 +26,10 @@ return {
                 header = vim.split(logo, "\n"),
                 -- stylua: ignore
                 center = {
-                    { action = "FzfLua files",                                     desc = " Find file",       icon = " ", key = "f" },
-                    { action = "Telescope oldfiles",                                       desc = " Recent files",    icon = " ", key = "o" },
-                    { action = "Telescope live_grep",                                      desc = " Find text",       icon = " ", key = "w" },
-                    { action = "qa",                                                       desc = " Quit",            icon = " ", key = "q" },
+                    { action = "FzfLua files", desc = " Find file", icon = " ", key = "f" },
+                    { action = "Telescope oldfiles", desc = " Recent files", icon = " ", key = "o" },
+                    { action = "Telescope live_grep", desc = " Find text", icon = " ", key = "w" },
+                    { action = "qa", desc = " Quit", icon = " ", key = "q" },
                 },
                 footer = function()
                     local stats = require("lazy").stats()
@@ -58,4 +58,4 @@ return {
         return opts
     end,
     dependencies = { 'nvim-tree/nvim-web-devicons' }
-                                                                                                                                                                                                                                                                  }
+}

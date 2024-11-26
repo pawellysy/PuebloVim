@@ -4,8 +4,6 @@ return {
     dependencies = 'rafamadriz/friendly-snippets',
 
     version = 'v0.*',
-    ---@module 'blink.cmp'
-    ---@type blink.cmp.Config
     opts = {
         -- 'default' for mappings similar to built-in completion
         -- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys to navigate)
@@ -26,10 +24,10 @@ return {
         },
 
         -- experim
-        -- accept = { auto_brackets = { enabled = true } }
+        accept = { auto_brackets = { enabled = true } },
 
         -- experimental signature help support
-        -- trigger = { signature_help = { enabled = true } }
+        trigger = { signature_help = { enabled = true } }
     },
     -- allows extending the enabled_providers array elsewhere in your config
     -- without having to redefine it
