@@ -2,7 +2,6 @@ return {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
-        "hrsh7th/cmp-nvim-lsp",
         { "antosha417/nvim-lsp-file-operations", config = true },
     },
     config = function()
@@ -38,14 +37,12 @@ return {
 
         local lspconfig = require("lspconfig")
 
-        -- import cmp-nvim-lsp plugin
-        local cmp_nvim_lsp = require("cmp_nvim_lsp")
         local on_attach = function(client, bufnr)
             local utils = require('pueblo.utils')
             utils.load_mappings('lspconfig', { buffer = bufnr })
         end
 
-        local capabilities = cmp_nvim_lsp.default_capabilities()
+        local capabilities = require('blink.cmp').get_lsp_capabilities()
         local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
         for type, icon in pairs(signs) do
             local hl = "DiagnosticSign" .. type
@@ -59,7 +56,7 @@ return {
             filetypes = { "go", "gomod", "gowork", "gotmpl" }
         }
 
-        lspconfig.bufls.setup {
+        lspconfig.buf_ls.setup {
             on_attach = on_attach,
             capabilities = capabilities,
         }
