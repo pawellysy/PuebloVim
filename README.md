@@ -4,8 +4,6 @@
 #### Currently WIP.
 TODO:
 Configure DAP
-Fix formatting the selected part. 
-
 
 ##### Adding new plugins
 To add new plugin, create new file in `lua/pueblo/plugings` dir and return its config to lazy.nvim package manager.
