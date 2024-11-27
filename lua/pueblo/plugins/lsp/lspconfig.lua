@@ -3,7 +3,21 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
         { "antosha417/nvim-lsp-file-operations", config = true },
+        { "ms-jpq/coq_nvim",                     branch = "coq" },
+
+        -- 9000+ Snippets
+        { "ms-jpq/coq.artifacts",                branch = "artifacts" },
+
+        -- lua & third party sources -- See https://github.com/ms-jpq/coq.thirdparty
+        -- Need to **configure separately**
+        { 'ms-jpq/coq.thirdparty',               branch = "3p" }
+
     },
+    init = function()
+        vim.g.coq_settings = {
+            auto_start = true,
+        }
+    end,
     config = function()
         vim.cmd [[autocmd! ColorScheme * highlight NormalFloat guibg=#1f2335]]
         vim.cmd [[autocmd! ColorScheme * highlight FloatBorder guifg=white guibg=#1f2335]]
@@ -24,6 +38,7 @@ return {
             ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
             ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
         }
+        local coq = require("coq")
 
         -- Do not forget to use the on_attach function
 
@@ -42,29 +57,25 @@ return {
             utils.load_mappings('lspconfig', { buffer = bufnr })
         end
 
-        local capabilities = require('blink.cmp').get_lsp_capabilities()
         local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
         for type, icon in pairs(signs) do
             local hl = "DiagnosticSign" .. type
             vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
         end
 
-        lspconfig.gopls.setup {
+        lspconfig.gopls.setup(coq.lsp_ensure_capabilities({
             on_attach = on_attach,
-            capabilities = capabilities,
             cmd = { "gopls" },
             filetypes = { "go", "gomod", "gowork", "gotmpl" }
-        }
+        }))
 
-        lspconfig.buf_ls.setup {
+        lspconfig.buf_ls.setup(coq.lsp_ensure_capabilities({
             on_attach = on_attach,
-            capabilities = capabilities,
-        }
+        }))
 
 
 
-        lspconfig['rust_analyzer'].setup({
-            capabilities = capabilities,
+        lspconfig['rust_analyzer'].setup(coq.lsp_ensure_capabilities({
             on_attach = on_attach,
             settings = {
                 ["rust-analyzer"] = {
@@ -81,9 +92,8 @@ return {
                     },
                 }
             }
-        });
-        lspconfig.ts_ls.setup {
-            capabilities = capabilities,
+        }));
+        lspconfig.ts_ls.setup(coq.lsp_ensure_capabilities({
             on_attach = on_attach,
             init_options = {
                 plugins = {
@@ -101,32 +111,29 @@ return {
                         hybridMode = false,
                     },
                 },
-            }, }
+            },
+        }))
 
 
-        lspconfig.pyright.setup({
-            capabilities = capabilities,
+        lspconfig.pyright.setup(coq.lsp_ensure_capabilities({
             on_attach = on_attach,
-        })
-        lspconfig.svelte.setup({
-            capabilities = capabilities,
+        }))
+        lspconfig.svelte.setup(coq.lsp_ensure_capabilities({
             on_attach = on_attach,
-        })
+        }))
 
         lspconfig.biome.setup({
         })
 
-        lspconfig["cssls"].setup({
-            capabilities = capabilities,
+        lspconfig["cssls"].setup(coq.lsp_ensure_capabilities({
             on_attach = on_attach,
 
-        })
+        }))
 
-        lspconfig.vtsls.setup({
-            capabilities = capabilities,
+        lspconfig.vtsls.setup(coq.lsp_ensure_capabilities({
             on_attach = on_attach,
             filetypes = { "vue" }
-        })
+        }))
 
         vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
             pattern = "*.wgsl",
@@ -137,8 +144,7 @@ return {
 
         lspconfig.wgsl_analyzer.setup {}
 
-        lspconfig["lua_ls"].setup({
-            capabilities = capabilities,
+        lspconfig["lua_ls"].setup(coq.lsp_ensure_capabilities({
             on_attach = on_attach,
             settings = { -- custom settings for lua
                 Lua = {
@@ -155,6 +161,6 @@ return {
                     },
                 },
             },
-        })
+        }))
     end
 }
