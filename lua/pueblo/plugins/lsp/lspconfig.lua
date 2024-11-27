@@ -3,6 +3,7 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
         { "antosha417/nvim-lsp-file-operations", config = true },
+        { 'saghen/blink.cmp' },
     },
     config = function()
         vim.cmd [[autocmd! ColorScheme * highlight NormalFloat guibg=#1f2335]]
