@@ -21,7 +21,8 @@ require('lazy').setup({{import = 'pueblo.plugins'}, {import = 'pueblo.plugins.ls
         notify = false
     },
     change_detection = {
-        notify = true
+        notify = true,
+        enabled = false
     }
 
 })
