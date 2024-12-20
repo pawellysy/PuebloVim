@@ -1,42 +1,63 @@
 return {
-    'saghen/blink.cmp',
-    enabled = false, -- lazy loading handled internally
-    lazy = false, -- lazy loading handled internally
-    dependencies = 'rafamadriz/friendly-snippets',
-
-    version = 'v0.*',
-    opts = {
-        -- 'default' for mappings similar to built-in completion
-        -- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys to navigate)
-        -- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
-        -- see the "default configuration" section below for full documentation on how to define
-        -- your own keymap.
-        keymap = { preset = 'enter' },
-
-        highlight = {
-            use_nvim_cmp_as_default = true,
+    "saghen/blink.cmp",
+    version = "*",
+    build = "cargo build --release",
+    opts_extend = {
+        "sources.completion.enabled_providers",
+        "sources.compat",
+        "sources.default",
+    },
+    dependencies = {
+        "rafamadriz/friendly-snippets",
+        {
+            "saghen/blink.compat",
+            optional = true, -- make optional so it's only enabled if any extras need it
+            opts = {},
+            version = not vim.g.lazyvim_blink_main and "*",
         },
-        nerd_font_variant = 'mono',
-
-        sources = {
-            completion = {
-                enabled_providers = { 'lsp', 'path', 'snippets', 'buffer' },
+    },
+    event = "InsertEnter",
+    opts = {
+        appearance = {
+            use_nvim_cmp_as_default = false,
+            nerd_font_variant = "mono",
+        },
+        completion = {
+            accept = {
+                auto_brackets = {
+                    enabled = true,
+                },
+            },
+            menu = {
+                draw = {
+                    treesitter = { "lsp" },
+                },
+            },
+            documentation = {
+                auto_show = true,
+                auto_show_delay_ms = 200,
+            },
+            ghost_text = {
+                enabled = vim.g.ai_cmp,
             },
         },
 
-        -- experim
-        accept = { auto_brackets = { enabled = true } },
+        signature = { enabled = true },
 
-        -- experimental signature help support
-        trigger = { signature_help = { enabled = true } }
+        sources = {
+            compat = {},
+            default = { "lsp", "path", "snippets", "buffer" },
+            cmdline = {},
+        },
+        keymap = {
+            preset = "enter",
+            ["<C-y>"] = { "select_and_accept" },
+            ["<C-j>"] = { "select_next" },
+            ["<C-k>"] = { "select_prev" },
+        },
     },
-    -- allows extending the enabled_providers array elsewhere in your config
-    -- without having to redefine it
-    opts_extend = { "sources.completion.enabled_providers" }
-    -- LSP servers and clients communicate what features they support through "capabilities".
-    --  By default, Neovim support a subset of the LSP specification.
-    --  With blink.cmp, Neovim has *more* capabilities which are communicated to the LSP servers.
-    --  Explanation from TJ: https://youtu.be/m8C0Cq9Uv9o?t=1275
-    --
-    -- This can vary by config, but in general for nvim-lspconfig:
+    config = function(_, opts)
+        require("blink.cmp").setup(opts)
+    end,
+
 }
