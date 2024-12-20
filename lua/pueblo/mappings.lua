@@ -236,7 +236,7 @@ M.lspconfig = {
     },
 
     i = {
-        ["<c-k>"] = { function() vim.lsp.buf.signature_help() end, "Signature Help" }
+        ["<c-l>"] = { function() vim.lsp.buf.signature_help() end, "Signature Help" }
     },
     v = {
         ["<leader>ca"] = {
@@ -253,21 +253,10 @@ M.telescope = {
     n = {
         -- find
         ["<leader>ff"] = { "<cmd> FzfLua files <CR>", "Find files" },
-        ["<leader>fs"] = { "<cmd> Telescope lsp_document_symbols <CR>", "Find symbols in the current document" },
-        ["<leader>fS"] = { "<cmd> Telescope lsp_dynamic_workspace_symbols <CR>", "Find symbols in the workspace" },
-        ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "Find all" },
-        ["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "Live grep" },
-        ["<leader>fb"] = { "<cmd> Telescope buffers <CR>", "Find buffers" },
-        ["<leader>fh"] = { "<cmd> Telescope help_tags <CR>", "Help page" },
-        ["<leader>fo"] = { "<cmd> Telescope oldfiles <CR>", "Find oldfiles" },
-        ["<leader>fz"] = { "<cmd> Telescope current_buffer_fuzzy_find <CR>", "Find in current buffer" },
-
-
-        -- git
-        ["<leader>cm"] = { "<cmd> Telescope git_commits <CR>", "Git commits" },
-        ["<leader>gt"] = { "<cmd> Telescope git_status <CR>", "Git status" },
-
-        ["<leader>ma"] = { "<cmd> Telescope marks <CR>", "telescope bookmarks" },
+        ["<leader>fs"] = { "<cmd> FzfLua lsp_document_symbols <CR>", "Find symbols in the current document" },
+        ["<leader>fw"] = { "<cmd> FzfLua live_grep <CR>", "Live grep" },
+        ["<leader>fb"] = { "<cmd> FzfLua buffers <CR>", "Find buffers" },
+        ["<leader>fz"] = { "<cmd> FzfLua lgrep_curbuf <CR>", "Find in current buffer" },
     },
 }
 
