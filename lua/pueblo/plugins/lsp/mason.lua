@@ -32,8 +32,6 @@
                     'gopls',
                     'cssls',
                     "biome",
-                    "bufls",
-                    -- "codelldb",
                     "lua_ls",
                     'rust_analyzer',
                     'wgsl_analyzer'

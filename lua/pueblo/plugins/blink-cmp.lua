@@ -1,7 +1,5 @@
 return {
-    "saghen/blink.cmp",
-    version = "*",
-    build = "cargo build --release",
+    'saghen/blink.cmp',
     opts_extend = {
         "sources.completion.enabled_providers",
         "sources.compat",
@@ -16,12 +14,9 @@ return {
             version = not vim.g.lazyvim_blink_main and "*",
         },
     },
-    event = "InsertEnter",
+    version = '*',
     opts = {
-        appearance = {
-            use_nvim_cmp_as_default = false,
-            nerd_font_variant = "mono",
-        },
+
         completion = {
             accept = {
                 auto_brackets = {
@@ -37,27 +32,22 @@ return {
                 auto_show = true,
                 auto_show_delay_ms = 200,
             },
-            ghost_text = {
-                enabled = vim.g.ai_cmp,
-            },
         },
 
         signature = { enabled = true },
-
-        sources = {
-            compat = {},
-            default = { "lsp", "path", "snippets", "buffer" },
-            cmdline = {},
-        },
         keymap = {
             preset = "enter",
             ["<C-y>"] = { "select_and_accept" },
             ["<C-j>"] = { "select_next" },
             ["<C-k>"] = { "select_prev" },
         },
-    },
-    config = function(_, opts)
-        require("blink.cmp").setup(opts)
-    end,
+        appearance = {
+            use_nvim_cmp_as_default = true,
+            nerd_font_variant = 'mono'
+        },
 
+        sources = {
+            default = { 'lsp', 'path', 'snippets', 'buffer' },
+        },
+    },
 }
