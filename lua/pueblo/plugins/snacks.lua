@@ -6,11 +6,12 @@ return {
         bigfile = { enabled = true },
         dashboard = { enabled = false },
         indent = { enabled = true },
-        input = { enabled = true },
+        input = { enabled = false },
         notifier = { enabled = true },
         quickfile = { enabled = true },
         scroll = { enabled = false },
         statuscolumn = { enabled = true },
+        scope = { enabled = true },
         words = { enabled = true },
     },
 

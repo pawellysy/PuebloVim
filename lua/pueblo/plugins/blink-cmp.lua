@@ -7,11 +7,12 @@ return {
     },
     dependencies = {
         "rafamadriz/friendly-snippets",
+        "supermaven-inc/supermaven-nvim",
+
         {
             "saghen/blink.compat",
-            optional = true, -- make optional so it's only enabled if any extras need it
             opts = {},
-            version = not vim.g.lazyvim_blink_main and "*",
+            version = "*",
         },
     },
     version = '*',
@@ -47,7 +48,12 @@ return {
         },
 
         sources = {
+            -- default = { 'lsp', 'supermaven', 'path', 'snippets', 'buffer' },
             default = { 'lsp', 'path', 'snippets', 'buffer' },
+            -- You may disable cmdline completions by replacing this with an empty table
+            cmdline = {
+                enabled = false
+            },
         },
     },
 }
