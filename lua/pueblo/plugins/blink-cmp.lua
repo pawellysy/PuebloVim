@@ -10,10 +10,7 @@ return {
     },
     dependencies = {
         "rafamadriz/friendly-snippets",
-        "supermaven-inc/supermaven-nvim",
         { "giuxtaposition/blink-cmp-copilot" },
-
-
         {
             "saghen/blink.compat",
             opts = {},
