@@ -22,9 +22,9 @@ M.general = {
     },
 
     n = {
-        ['<leader>d'] = { "<cmd>%bd|e#|bd#<cr>", "close all other buffers" },
-        ["<leader>n"] = { "<cmd>MediaControlNext<cr>", "next track" },
-        ["<leader>p"] = { "<cmd>MediaControlPrevious<cr>", "previous track" },
+        ['<leader>d'] = { "<cmd>%bd!|e#|bd!#<cr>", "close all other buffers" },
+        ['<leader>O'] = { "m`O<esc>``", "add one line above and not move cursor" },
+        ['<leader>o'] = { "m`o<esc>``", "add one line below and not move cursor" },
         ["<leader>x"] = { "<cmd>bp|bd#<CR>", "close buffer" },
         ["<Esc>"] = { "<cmd>noh<CR>", "Clear highlights" },
         ["<leader>s"] = { "<cmd>wa<CR>", "save all files" },
@@ -36,9 +36,6 @@ M.general = {
         -- move 1/2 screen
         ["<C-d>"] = { "<C-d>zz", 'go down 1/2 screen' },
         ["<C-u>"] = { "<C-u>zz", 'go up 1/2 screen' },
-        ["<C-.>"] = { "<C-w>>", 'make window wider' },
-        ["<C-,>"] = { "<C-w><", 'make window narrower' },
-
         ---
         ["n"] = { "nzzzv", 'go to next search result' },
         ["N"] = { "Nzzzv", 'go to prev search result' },
@@ -248,6 +245,12 @@ M.lspconfig = {
     },
 }
 
+M.scratch = {
+    n = {
+        ["<leader>."] = { function() Snacks.scratch() end, "Toggle Scratch Buffer" },
+        ["<leader>S"] = { function() Snacks.scratch.select() end, "Select Scratch Buffer" },
+    },
+}
 M.telescope = {
     plugin = true,
     n = {
@@ -257,6 +260,7 @@ M.telescope = {
         ["<leader>fw"] = { "<cmd> FzfLua live_grep <CR>", "Live grep" },
         ["<leader>fb"] = { "<cmd> FzfLua buffers <CR>", "Find buffers" },
         ["<leader>fz"] = { "<cmd> FzfLua lgrep_curbuf <CR>", "Find in current buffer" },
+        ["<c-q>"] = { "<cmd> FzfLua quickfix <CR>", "Send quickfix list results back to fzf" },
     },
 }
 
@@ -414,10 +418,10 @@ M.harpoon = {
         ['<c-e>'] = {
             function() require('harpoon.ui').toggle_quick_menu() end, 'Harpoon: toggle quick menu'
         },
-        ['<a-j>'] = {
+        ['∆'] = { -- alt + j
             function() require('harpoon.ui').nav_next() end, 'Harpoon: next'
         },
-        ['<a-k>'] = {
+        ['Ż'] = { -- alt + k
             function() require('harpoon.ui').nav_prev() end, 'Harpoon: prev'
         },
         ['<a-i>'] = {
@@ -433,11 +437,11 @@ M.harpoon = {
 
 }
 
-M.symbolsoutline = {
-    n = {
-        ["<leader>o"] = { "<cmd>SymbolsOutline<CR>", 'Show Symbols Outline' }
-    }
-}
+-- M.symbolsoutline = {
+--     n = {
+--         ["<leader>o"] = { "<cmd>SymbolsOutline<CR>", 'Show Symbols Outline' }
+--     }
+-- }
 
 -- M.dap = {
 --
@@ -463,6 +467,16 @@ M.symbolsoutline = {
 -- }
 
 
+M.snacks = {
+    n = {
+        ["<leader>n"] = {
+            function()
+                Snacks.notifier.show_history()
+            end,
+            "show notification history",
+        },
+    },
+}
 M.conform = {
     n = {
         ["<leader>="] = {

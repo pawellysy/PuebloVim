@@ -3,18 +3,17 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
         { "antosha417/nvim-lsp-file-operations", config = true },
-      'WhoIsSethDaniel/mason-tool-installer.nvim',
+        'WhoIsSethDaniel/mason-tool-installer.nvim',
 
-      -- Useful status updates for LSP.
-      { 'j-hui/fidget.nvim', opts = {} },
+        -- Useful status updates for LSP.
+        { 'j-hui/fidget.nvim',                   opts = {} },
 
-      -- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
-      -- used for completion, annotations and signatures of Neovim apis
-      { 'folke/neodev.nvim', opts = {} },
+        -- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
+        -- used for completion, annotations and signatures of Neovim apis
+        { 'folke/neodev.nvim',                   opts = {} },
         { 'saghen/blink.cmp' },
     },
     config = function()
-
         local lspconfig = require("lspconfig")
         local on_attach = function(client, bufnr)
             local utils = require('pueblo.utils')

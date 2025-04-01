@@ -18,7 +18,6 @@ opt.softtabstop = 4
 opt.relativenumber = true
 opt.incsearch = true
 
-opt.fillchars = { eob = " " }
 opt.ignorecase = true
 opt.smartcase = true
 opt.mouse = "a"
@@ -48,4 +47,3 @@ opt.updatetime = 50
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
 opt.whichwrap:append "<>[]hl"
-

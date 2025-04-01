@@ -1,9 +1,6 @@
 return {
     'saghen/blink.cmp',
     opts_extend = {
-
-
-
         "sources.completion.enabled_providers",
         "sources.compat",
         "sources.default",
@@ -35,6 +32,19 @@ return {
                 auto_show = true,
                 auto_show_delay_ms = 200,
             },
+        },
+        cmdline = {
+            keymap = {
+                ['<Tab>'] = { 'show', 'accept' }
+            },
+            completion = {
+                menu = {
+                    auto_show = function()
+                        return vim.fn.getcmdtype() == ':'
+                    end,
+                },
+            }
+
         },
 
         signature = { enabled = true },
@@ -85,9 +95,6 @@ return {
 
         sources = {
             default = { "lsp", "path", "snippets", "buffer", "copilot" },
-            cmdline = {
-                enabled = false
-            },
             providers = {
                 copilot = {
                     transform_items = function(_, items)

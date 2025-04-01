@@ -8,6 +8,7 @@ return {
                 -- transparent = true,
                 style = "night",
                 on_highlights = function(hl, c)
+                    hl.WinSeparator = { fg = "#000000", bg = "NONE", bold = true }
                     local prompt = "#2d3149"
                     hl.TelescopeNormal = {
                         bg = c.bg_dark,
