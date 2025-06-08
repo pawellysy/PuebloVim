@@ -8,11 +8,6 @@ M.oil = {
     }
 }
 
-M.globalnote = {
-    n = {
-        ['<leader>gn'] = { '<cmd>GlobalNote<cr>' },
-    }
-}
 M.general = {
     i = {
         -- go to  beginning and end
@@ -32,6 +27,8 @@ M.general = {
         ["0"] = { "^", "go to first non whitespace char on the line" },
         ["^"] = { "0", "go to beginning o the line" },
         ["J"] = { "mzJ`z", 'move next line to the same line' },
+        ["<c-i>"] = { "<c-i>zz", 'jumplist backward' },
+        ["<c-o>"] = { "<c-o>zz", 'jumplist foreward' },
 
         -- move 1/2 screen
         ["<C-d>"] = { "<C-d>zz", 'go down 1/2 screen' },
@@ -142,7 +139,7 @@ M.lspconfig = {
 
         ["K"] = {
             function()
-                vim.lsp.buf.hover()
+                vim.lsp.buf.hover { border = "single" }
             end,
             "LSP hover",
         },
@@ -259,6 +256,7 @@ M.telescope = {
         ["<leader>fs"] = { "<cmd> FzfLua lsp_document_symbols <CR>", "Find symbols in the current document" },
         ["<leader>fw"] = { "<cmd> FzfLua live_grep <CR>", "Live grep" },
         ["<leader>fb"] = { "<cmd> FzfLua buffers <CR>", "Find buffers" },
+        ["<leader>j"] = { "<cmd> FzfLua buffers <CR>", "Find buffers" },
         ["<leader>fz"] = { "<cmd> FzfLua lgrep_curbuf <CR>", "Find in current buffer" },
         ["<c-q>"] = { "<cmd> FzfLua quickfix <CR>", "Send quickfix list results back to fzf" },
     },
@@ -283,95 +281,7 @@ M.whichkey = {
     },
 }
 
-M.blankline = {
-    plugin = true,
 
-    n = {
-        ["<leader>cc"] = {
-            function()
-                local config = { scope = {} }
-                config.scope.exclude = { language = {}, node_type = {} }
-                config.scope.include = { node_type = {} }
-                local node = require("ibl.scope").get(vim.api.nvim_get_current_buf(), config)
-
-                if node then
-                    local start_row, _, end_row, _ = node:range()
-                    if start_row ~= end_row then
-                        vim.api.nvim_win_set_cursor(vim.api.nvim_get_current_win(), { start_row + 1, 0 })
-                        vim.api.nvim_feedkeys("_", "n", true)
-                    end
-                end
-            end,
-
-            "Jump to current context",
-        },
-    },
-}
-
-M.gitsigns = {
-    plugin = true,
-
-    n = {
-        -- Navigation through hunks
-        ["<leader>gp"] = { "<cmd>lua require('gitsigns').preview_hunk()<CR>", "Preview hunk" },
-        ["]c"] = {
-            function()
-                if vim.wo.diff then
-                    return "]c"
-                end
-                vim.schedule(function()
-                    require("gitsigns").next_hunk()
-                end)
-                return "<Ignore>"
-            end,
-            "Jump to next hunk",
-            opts = { expr = true },
-        },
-
-        ["[c"] = {
-            function()
-                if vim.wo.diff then
-                    return "[c"
-                end
-                vim.schedule(function()
-                    require("gitsigns").prev_hunk()
-                end)
-                return "<Ignore>"
-            end,
-            "Jump to prev hunk",
-            opts = { expr = true },
-        },
-
-        -- Actions
-        ["<leader>rh"] = {
-            function()
-                require("gitsigns").reset_hunk()
-            end,
-            "Reset hunk",
-        },
-
-        ["<leader>ph"] = {
-            function()
-                require("gitsigns").preview_hunk()
-            end,
-            "Preview hunk",
-        },
-
-        ["<leader>gb"] = {
-            function()
-                package.loaded.gitsigns.blame_line()
-            end,
-            "Blame line",
-        },
-
-        ["<leader>td"] = {
-            function()
-                require("gitsigns").toggle_deleted()
-            end,
-            "Toggle deleted",
-        },
-    },
-}
 
 M.trouble = {
     plugin = true,

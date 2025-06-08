@@ -15,7 +15,7 @@ return {
     },
     config = function()
         local lspconfig = require("lspconfig")
-        local on_attach = function(client, bufnr)
+        local on_attach = function(_, bufnr)
             local utils = require('pueblo.utils')
             utils.load_mappings('lspconfig', { buffer = bufnr })
         end
@@ -27,6 +27,8 @@ return {
             vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
         end
 
+
+
         lspconfig.gopls.setup {
             on_attach = on_attach,
             capabilities = capabilities,
@@ -36,6 +38,11 @@ return {
         }
 
         lspconfig.buf_ls.setup {
+            on_attach = on_attach,
+            capabilities = capabilities,
+        }
+
+        lspconfig.pyright.setup {
             on_attach = on_attach,
             capabilities = capabilities,
         }
