@@ -26,7 +26,7 @@ return {
                         move[name] = function(q, ...)
                             if vim.wo.diff then
                                 local config = configs.get_module("textobjects.move")
-                                [name] ---@type table<string,string>
+                                    [name] ---@type table<string,string>
                                 for key, query in pairs(config or {}) do
                                     if q == query and key:find("[%]%[][cC]") then
                                         vim.cmd("normal! " .. key)
@@ -63,7 +63,7 @@ return {
             "c",
             "diff",
             'ron',
-            -- 'go',
+            'go',
             'rust',
             "html",
             "javascript",
@@ -131,6 +131,11 @@ return {
         },
     },
     config = function(_, opts)
+        vim.filetype.add({
+            extension = {
+                pyst = "python",
+            },
+        })
         if type(opts.ensure_installed) == "table" then
             ---@type table<string, boolean>
             local added = {}

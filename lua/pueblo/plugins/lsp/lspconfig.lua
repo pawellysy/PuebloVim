@@ -15,19 +15,16 @@ return {
     },
     config = function()
         local lspconfig = require("lspconfig")
+
         local on_attach = function(_, bufnr)
             local utils = require('pueblo.utils')
             utils.load_mappings('lspconfig', { buffer = bufnr })
         end
 
         local capabilities = require('blink.cmp').get_lsp_capabilities()
-        local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
-        for type, icon in pairs(signs) do
-            local hl = "DiagnosticSign" .. type
-            vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-        end
 
 
+        vim.diagnostic.config({ virtual_text = false, virtual_lines = { current_line = true }, })
 
         lspconfig.gopls.setup {
             on_attach = on_attach,
@@ -37,20 +34,15 @@ return {
             directoryFilters = { "-vendor", "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
         }
 
-        lspconfig.buf_ls.setup {
+
+
+        lspconfig["pyright"].setup({
             on_attach = on_attach,
             capabilities = capabilities,
-        }
-
-        lspconfig.pyright.setup {
-            on_attach = on_attach,
-            capabilities = capabilities,
-        }
-
-
+        })
         lspconfig["lua_ls"].setup({
-            capabilities = capabilities,
             on_attach = on_attach,
+            capabilities = capabilities,
             settings = { -- custom settings for lua
                 Lua = {
                     -- make the language server recognize "vim" global
